@@ -1,16 +1,18 @@
 {
-  "version": 2,
-  "builds": [{ "src": "index.js", "use": "@now/node-server" }],
-  "routes": [
+    "version": 2,
+    "builds": [
     {
-      "src": "/users",
-      "dest": "/index.js",
-      "methods": ["GET"]
-    },
+        "src": "index.js",
+        "use": "@now/node-server",
+        "config":
+        {
+            "includeFiles": ["db.json"]
+        }
+    }],
+    "routes": [
     {
-      "src": "/user",
-      "dest": "/index.js",
-      "methods": ["POST"]
-    }
-  ]
+        "src": "/(.*)",
+        "dest": "/index.js"
+    }]
+
 }
